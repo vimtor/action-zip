@@ -1,15 +1,15 @@
 name: "Zip Files"
 description: "Action for zipping files easily"
 inputs:
-  github-token:
-    description: "GitHub Token"
-    required: true
   files:
     description: "Files or directories to zip"
     required: true
   dest:
     description: "Name of output zip file"
     default: "result.zip"
+  recursive:
+    description: "Whether to add subdirectories to simply zip all files to the root"
+    default: true
 runs:
   using: "node12"
   main: "dist/index.js"
