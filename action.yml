@@ -1,5 +1,5 @@
 name: "Easy Zip Files"
-description: "Action for zipping files easily"
+description: "Action for zipping files and folders easily"
 inputs:
   files:
     description: "Files or directories to zip"
