@@ -61,3 +61,14 @@ If for example, you do the following:
 All the files inside the `dist` folder will be added at the root of the zip along with `manifest.json`. By contrast, if `recursive: true` (by default), the folder `dist` is included.
 
 Also if you want a nested file at the root, `recursive: false` is your guy.
+
+## Troubleshooting
+
+If you want to check that the output is the desired one I recommend you to add the following step after zipping. You will me able to download the `result.zip` file.
+
+```yaml
+- uses: actions/upload-artifact@v1
+  with:
+    name: my-artifact
+    path: ${{ github.workspace }}/result.zip
+```
