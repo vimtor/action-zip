@@ -61,11 +61,15 @@ const core = __webpack_require__(470);
 const inputFiles = core.getInput("files", { required: true });
 const filename = core.getInput("filename");
 
-const files = inputFiles.split(" ");
+const files = inputFiles
+  .split(" ")
+  .map(file => path.join(process.env.GITHUB_WORKSPACE, file));
 
 console.log(`Ready to zip "${inputFiles}" into ${filename}`);
 
 const zip = new AdmZip();
+
+console.log(files);
 
 files.forEach(file => {
   if (!fs.existsSync(file)) {
