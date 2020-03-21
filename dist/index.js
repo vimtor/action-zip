@@ -59,7 +59,7 @@ const AdmZip = __webpack_require__(639);
 const core = __webpack_require__(470);
 
 const inputFiles = core.getInput("files", { required: true });
-const filename = core.getInput("filename");
+const filename = core.getInput("output");
 
 const files = inputFiles
   .split(" ")

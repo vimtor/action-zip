@@ -4,7 +4,7 @@ const AdmZip = require("adm-zip");
 const core = require("@actions/core");
 
 const inputFiles = core.getInput("files", { required: true });
-const filename = core.getInput("filename");
+const filename = core.getInput("output");
 
 const files = inputFiles
   .split(" ")
