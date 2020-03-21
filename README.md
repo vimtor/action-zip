@@ -47,3 +47,17 @@ Whether to add subdirectories to simply zip all files to the root.
 
 - **Required:** No
 - **Default:** true
+
+If for example, you do the following:
+
+```yaml
+- uses: papeloto/action-zip@v1
+  with:
+    files: dist/ manifest.json
+    recursive: false
+    dest: result.zip
+```
+
+All the files inside the `dist` folder will be added at the root of the zip along with `manifest.json`. By contrast, if `recursive: true` (by default), the folder `dist` is included.
+
+Also if you want a nested file at the root, `recursive: false` is your guy.

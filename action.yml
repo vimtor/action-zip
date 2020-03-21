@@ -6,10 +6,15 @@ inputs:
     required: true
   dest:
     description: "Name of output zip file"
+    required: false
     default: "result.zip"
   recursive:
     description: "Whether to add subdirectories to simply zip all files to the root"
+    required: false
     default: true
+branding:
+  icon: "package"
+  color: "red"
 runs:
   using: "node12"
   main: "dist/index.js"

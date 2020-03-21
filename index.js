@@ -38,5 +38,3 @@ const destPath = path.join(process.env.GITHUB_WORKSPACE, dest);
 zip.writeZip(destPath);
 
 console.log(`\nZipped file ${dest} successfully`);
-
-core.setOutput(destPath);

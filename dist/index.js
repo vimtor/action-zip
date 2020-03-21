@@ -94,8 +94,6 @@ zip.writeZip(destPath);
 
 console.log(`\nZipped file ${dest} successfully`);
 
-core.setOutput(destPath);
-
 
 /***/ }),
 
