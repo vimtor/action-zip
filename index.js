@@ -21,13 +21,13 @@ files.split(" ").forEach(fileName => {
   const dir = path.dirname(fileName);
   const stats = fs.lstatSync(filePath);
 
-  console.log(`dir: ${dir}`);
-  console.log(`Is dir: ${stats.isDirectory()}`);
   console.log(`filePath: ${filePath}`);
   console.log(`fileName: ${fileName}`);
+  console.log(`dir: ${dir}`);
+  console.log(`Is dir: ${stats.isDirectory()}`);
 
   if (stats.isDirectory()) {
-    zip.addLocalFolder(filePath, dir);
+    zip.addLocalFolder(filePath, dir === "." ? fileName : dir);
   } else {
     zip.addLocalFile(filePath, dir === "." ? "" : dir);
   }
@@ -39,6 +39,6 @@ const destPath = path.join(process.env.GITHUB_WORKSPACE, dest);
 
 zip.writeZip(destPath);
 
-console.log(`\nZipped file ${destPath} successfully`);
+console.log(`\nZipped file ${dest} successfully`);
 
 core.setOutput(destPath);
