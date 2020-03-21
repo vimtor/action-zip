@@ -60,6 +60,7 @@ const core = __webpack_require__(470);
 
 const files = core.getInput("files");
 const dest = core.getInput("dest");
+const recursive = core.getInput("recursive") === "true";
 
 console.log(`Ready to zip "${files}" into ${dest}`);
 
@@ -76,15 +77,12 @@ files.split(" ").forEach(fileName => {
   const dir = path.dirname(fileName);
   const stats = fs.lstatSync(filePath);
 
-  console.log(`filePath: ${filePath}`);
-  console.log(`fileName: ${fileName}`);
-  console.log(`dir: ${dir}`);
-  console.log(`Is dir: ${stats.isDirectory()}`);
-
   if (stats.isDirectory()) {
-    zip.addLocalFolder(filePath, dir === "." ? fileName : dir);
+    const zipDir = dir === "." ? fileName : dir;
+    zip.addLocalFolder(filePath, !recursive && zipDir);
   } else {
-    zip.addLocalFile(filePath, dir === "." ? "" : dir);
+    const zipDir = dir === "." ? "" : dir;
+    zip.addLocalFile(filePath, !recursive && zipDir);
   }
 
   console.log(`  - ${fileName}`);
