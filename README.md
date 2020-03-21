@@ -1,6 +1,6 @@
 # action-zip
 
-> Action for zipping files easily
+> Action for zipping files and folders easily
 
 ## Usage
 
