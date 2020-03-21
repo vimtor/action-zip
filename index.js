@@ -21,6 +21,11 @@ files.split(" ").forEach(fileName => {
   const dir = path.dirname(fileName);
   const stats = fs.lstatSync(filePath);
 
+  console.log(`dir: ${dir}`);
+  console.log(`Is dir: ${stats.isDirectory()}`);
+  console.log(`filePath: ${filePath}`);
+  console.log(`fileName: ${fileName}`);
+
   if (stats.isDirectory()) {
     zip.addLocalFolder(filePath, dir);
   } else {
