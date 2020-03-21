@@ -58,42 +58,40 @@ const path = __webpack_require__(622);
 const AdmZip = __webpack_require__(639);
 const core = __webpack_require__(470);
 
-const files = core
-  .getInput("files", { required: true })
-  .split(" ")
-  .map(file => path.join(process.env.GITHUB_WORKSPACE, file));
+const files = core.getInput("files");
+const dest = core.getInput("dest");
 
-const output = path.join(process.env.GITHUB_WORKSPACE, core.getInput("output"));
-
-console.log(`Ready to zip "${files}" into ${output}`);
+console.log(`Ready to zip "${files}" into ${dest}`);
 
 const zip = new AdmZip();
 
-files.forEach(file => {
-  const filename = file.replace(`${process.env.GITHUB_WORKSPACE}/`, "");
+files.split(" ").forEach(fileName => {
+  const filePath = path.join(process.env.GITHUB_WORKSPACE, fileName);
 
-  if (!fs.existsSync(file)) {
-    console.log(`  - ${filename} (Not Found)`);
+  if (!fs.existsSync(filePath)) {
+    console.log(`  - ${fileName} (Not Found)`);
     return;
   }
 
-  const dir = path.dirname(filename);
-  const stats = fs.lstatSync(file);
+  const dir = path.dirname(fileName);
+  const stats = fs.lstatSync(filePath);
 
   if (stats.isDirectory()) {
-    zip.addLocalFolder(file, dir);
+    zip.addLocalFolder(filePath, dir);
   } else {
-    zip.addLocalFile(file, dir === "." ? "" : dir);
+    zip.addLocalFile(filePath, dir === "." ? "" : dir);
   }
 
-  console.log(`  - ${filename}`);
+  console.log(`  - ${fileName}`);
 });
 
-zip.writeZip(output);
+const destPath = path.join(process.env.GITHUB_WORKSPACE, dest);
 
-console.log(`\nZipped file ${output}`);
+zip.writeZip(destPath);
 
-core.setOutput(output);
+console.log(`\nZipped file ${destPath} successfully`);
+
+core.setOutput(destPath);
 
 
 /***/ }),
