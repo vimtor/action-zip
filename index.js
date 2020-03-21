@@ -15,20 +15,20 @@ console.log(`Ready to zip "${files}" into ${output}`);
 const zip = new AdmZip();
 
 files.forEach(file => {
-  const filename = file.replace(process.env.GITHUB_WORKSPACE, "");
+  const filename = file.replace(`${process.env.GITHUB_WORKSPACE}/`, "");
 
-  if (!fs.existsSync(filename)) {
+  if (!fs.existsSync(file)) {
     console.log(`  - ${filename} (Not Found)`);
     return;
   }
 
   const dir = path.dirname(filename);
-  const stats = fs.lstatSync(filename);
+  const stats = fs.lstatSync(file);
 
   if (stats.isDirectory()) {
-    zip.addLocalFolder(filename, dir);
+    zip.addLocalFolder(file, dir);
   } else {
-    zip.addLocalFile(filename, dir === "." ? "" : dir);
+    zip.addLocalFile(file, dir === "." ? "" : dir);
   }
 
   console.log(`  - ${filename}`);
