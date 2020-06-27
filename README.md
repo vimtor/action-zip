@@ -1,6 +1,6 @@
 # action-zip
 
-> Action for zipping files and folders easily
+Action for zipping files and folders easily
 
 ## Usage
 
@@ -64,7 +64,7 @@ Also if you want a nested file at the root, `recursive: false` is your guy.
 
 ## Troubleshooting
 
-If you want to check that the output is the desired one I recommend you to add the following step after zipping. You will me able to download the `result.zip` file.
+If you want to check that the output is the desired one I recommend you to add the following step after zipping. You will be able to download the `result.zip` file.
 
 ```yaml
 - uses: actions/upload-artifact@v1
