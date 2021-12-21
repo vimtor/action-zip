@@ -30,7 +30,7 @@ In this example, after a release is published, a new file named `result.zip` wil
 
 #### `files`
 
-Files or directories to zip.
+Files or directories to zip, relative to GITHUB_WORKSPACE environmental variable.
 
 - **Required:** Yes
 
