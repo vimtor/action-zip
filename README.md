@@ -58,9 +58,9 @@ If for example, you do the following:
     dest: result.zip
 ```
 
-All the files inside the `dist` folder will be added at the root of the zip along with `manifest.json`. By contrast, if `recursive: true` (by default), the folder `dist` is included.
+The folder `dist` is included with along with its files. By contrast, if `recurise: true` (by default) All the files inside the `dist` folder will be added at the root of the zip along with `manifest.json`
 
-Also if you want a nested file at the root, `recursive: false` is your guy.
+Also if you want a nested file at the root, `recursive: true` is your guy.
 
 ## Troubleshooting
 
