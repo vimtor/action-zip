@@ -51,7 +51,7 @@ Whether to add subdirectories to simply zip all files to the root.
 If for example, you do the following:
 
 ```yaml
-- uses: vimtor/action-zip@v1
+- uses: vimtor/action-zip@v1.1
   with:
     files: dist/ manifest.json
     recursive: false
@@ -67,7 +67,7 @@ Also if you want a nested file at the root, `recursive: true` is your guy.
 If you want to check that the output is the desired one I recommend you to add the following step after zipping. You will be able to download the `result.zip` file.
 
 ```yaml
-- uses: actions/upload-artifact@v1
+- uses: actions/upload-artifact@v1.1
   with:
     name: my-artifact
     path: ${{ github.workspace }}/result.zip
