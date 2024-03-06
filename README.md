@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: vimtor/action-zip@v1.1
+      - uses: vimtor/action-zip@v1.2
         with:
           files: dist/ manifest.json
           dest: result.zip
@@ -51,7 +51,7 @@ Whether to add subdirectories to simply zip all files to the root.
 If for example, you do the following:
 
 ```yaml
-- uses: vimtor/action-zip@v1.1
+- uses: vimtor/action-zip@v1.2
   with:
     files: dist/ manifest.json
     recursive: false
